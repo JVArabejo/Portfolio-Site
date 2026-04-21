@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Vincent Arabejo — Remote Executive Assistant & Social Media Strategist</title>
+  <meta name="description" content="Remote Executive Assistant & Social Media Manager for US startups. John Vincent Arabejo helps founders reclaim their time, eliminate chaos, and build real operational momentum." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ───────────────────────────────────────────────── */
+    :root {
+      --navy:        #0D1B2A;
+      --navy-mid:    #162539;
+      --navy-light:  #1E3354;
+      --gold:        #B8964A;
+      --gold-light:  #D4AF6E;
+      --white:       #FAFAF8;
+      --off-white:   #F2F0EB;
+      --muted:       #8A9BB0;
+      --border:      rgba(184,150,74,0.18);
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --sans:        'DM Sans', sans-serif;
+      --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ── RESET ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--navy);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── UTILITY ──────────────────────────────────────────────── */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .gold { color: var(--gold); }
+    .serif { font-family: var(--serif); }
+
+    /* ── SCROLL REVEAL ────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── NAV ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 0;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(13, 27, 42, 0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(184,150,74,0.2);
+      padding: 0.9rem 0;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.7);
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.6rem 1.4rem;
+      font-weight: 500 !important;
+      letter-spacing: 0.08em !important;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile nav */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+      border-radius: 2px;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--navy);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--white);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .m-cta {
+      font-family: var(--sans);
+      font-size: 0.9rem !important;
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.9rem 2.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Diagonal texture overlay */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 60px,
+          rgba(184,150,74,0.025) 60px,
+          rgba(184,150,74,0.025) 61px
+        );
+      pointer-events: none;
+    }
+
+    /* Corner accent */
+    .hero-corner {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 45vw;
+      height: 45vw;
+      max-width: 600px;
+      max-height: 600px;
+      border-top: 1px solid rgba(184,150,74,0.15);
+      border-left: 1px solid rgba(184,150,74,0.15);
+      border-radius: 100% 0 0 0;
+      pointer-events: none;
+    }
+    .hero-corner-inner {
+      position: absolute;
+      bottom: 40px; right: 40px;
+      left: 80px; top: 80px;
+      border-top: 1px solid rgba(184,150,74,0.08);
+      border-left: 1px solid rgba(184,150,74,0.08);
+      border-radius: 100% 0 0 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 0 5rem;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.2s forwards;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      max-width: 820px;
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.4s forwards;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(250,250,248,0.65);
+      font-weight: 300;
+      max-width: 540px;
+      line-height: 1.75;
+      margin-bottom: 2.8rem;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.6s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.75s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(184,150,74,0.3);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(250,250,248,0.25);
+      color: rgba(250,250,248,0.8);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border-radius: 2px;
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .hero-metrics {
+      display: flex;
+      gap: 3rem;
+      margin-top: 5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(184,150,74,0.15);
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 1s forwards;
+    }
+    .metric-item { }
+    .metric-number {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .metric-number span { color: var(--gold); }
+    .metric-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s var(--ease-out) 1.4s forwards;
+    }
+    .scroll-indicator span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── MARQUEE STRIP ────────────────────────────────────────── */
+    .marquee-strip {
+      background: var(--gold);
+      padding: 0.7rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .marquee-track span {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--navy);
+      padding: 0 2.5rem;
+    }
+    .marquee-dot {
+      color: rgba(13,27,42,0.4) !important;
+      padding: 0 0.5rem !important;
+    }
+
+    /* ── WHY HIRE ME ──────────────────────────────────────────── */
+    #why {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-headline {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1.4rem;
+    }
+    .section-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .section-intro {
+      font-size: 1.05rem;
+      color: #4A5568;
+      font-weight: 300;
+      line-height: 1.75;
+      max-width: 620px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 4.5rem;
+    }
+    .why-left { }
+    .why-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .why-card {
+      background: var(--navy);
+      border: 1px solid rgba(184,150,74,0.15);
+      padding: 2.2rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .why-card:hover {
+      border-color: rgba(184,150,74,0.45);
+      transform: translateY(-3px);
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transition: transform 0.35s var(--ease-out);
+      transform-origin: top;
+    }
+    .why-card:hover::before { transform: scaleY(1); }
+    .why-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .why-card-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+    .why-card-text {
+      font-size: 0.9rem;
+      color: rgba(250,250,248,0.6);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .why-statement {
+      background: var(--off-white);
+      border: 1px solid rgba(13,27,42,0.08);
+      padding: 2.5rem 2rem;
+    }
+    .why-statement-quote {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--navy);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .why-statement-quote strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .why-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: #3D4F62;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .why-list li::before {
+      content: '—';
+      color: var(--gold);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    /* ── SERVICES ─────────────────────────────────────────────── */
+    #services {
+      padding: 7rem 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    #services::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,150,74,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #services .section-headline { color: var(--white); }
+    #services .section-intro { color: rgba(250,250,248,0.55); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 4rem;
+    }
+    .service-panel {
+      background: var(--navy-mid);
+      padding: 3.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.35s;
+    }
+    .service-panel:hover { background: var(--navy-light); }
+    .service-panel::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s var(--ease-out);
+    }
+    .service-panel:hover::after { transform: scaleX(1); }
+    .service-num {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(184,150,74,0.12);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .service-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .service-tagline {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    .service-desc {
+      font-size: 0.92rem;
+      color: rgba(250,250,248,0.55);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+    .service-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .service-features li {
+      font-size: 0.85rem;
+      color: rgba(250,250,248,0.65);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .service-features li::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── RESULTS ──────────────────────────────────────────────── */
+    #results {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+    .results-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 4rem;
+    }
+    .results-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: rgba(13,27,42,0.1);
+    }
+    .stat-box {
+      background: var(--off-white);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .stat-box:hover { background: var(--navy); }
+    .stat-box:hover .stat-number,
+    .stat-box:hover .stat-label { color: var(--white); }
+    .stat-box:hover .stat-number { color: var(--gold-light); }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+    .stat-number em { font-style: normal; color: var(--gold); }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .results-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .result-item {
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+    }
+    .result-item-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .result-item-text {
+      font-size: 1rem;
+      color: var(--navy);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .result-item-text strong { font-weight: 500; }
+
+    /* ── ABOUT ────────────────────────────────────────────────── */
+    #about {
+      padding: 7rem 0;
+      background: var(--navy);
+      position: relative;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-photo-wrap {
+      position: relative;
+    }
+    .about-photo-frame {
+      position: relative;
+      display: inline-block;
+    }
+    .about-photo-frame::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: -12px; right: 12px; bottom: 12px;
+      border: 1px solid rgba(184,150,74,0.3);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .about-photo-frame::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(
+        135deg,
+        transparent 60%,
+        rgba(184,150,74,0.12) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #162539 0%, #0D1B2A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 0;
+    }
+    .about-initials {
+      font-family: var(--serif);
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.5;
+      line-height: 1;
+    }
+    .about-photo-caption {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.3);
+    }
+    .about-content {}
+    #about .section-headline { color: var(--white); }
+    .about-body {
+      font-size: 1rem;
+      color: rgba(250,250,248,0.6);
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+    }
+    .about-body strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+    .about-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+    .about-value {
+      border: 1px solid rgba(184,150,74,0.25);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      font-weight: 400;
+    }
+
+    /* ── TESTIMONIALS / SOCIAL PROOF ──────────────────────────── */
+    #proof {
+      padding: 6rem 0;
+      background: var(--off-white);
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .proof-card {
+      background: var(--white);
+      border: 1px solid rgba(13,27,42,0.08);
+      padding: 2.2rem 1.8rem;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .proof-card:hover {
+      box-shadow: 0 12px 40px rgba(13,27,42,0.1);
+      transform: translateY(-4px);
+    }
+    .proof-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.2rem;
+    }
+    .proof-stars span {
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+    .proof-text {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .proof-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .proof-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .proof-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .proof-role {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CTA SECTION ──────────────────────────────────────────── */
+    #cta {
+      padding: 8rem 0;
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,150,74,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .cta-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+    }
+    .cta-headline em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .cta-sub {
+      font-size: 1rem;
+      color: rgba(250,250,248,0.5);
+      font-weight: 300;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1.15rem 2.8rem;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .btn-primary-lg:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(184,150,74,0.35);
+    }
+    .btn-ghost-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(250,250,248,0.2);
+      color: rgba(250,250,248,0.75);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1.15rem 2.8rem;
+      border-radius: 2px;
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+    .btn-ghost-lg:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+    .cta-note {
+      margin-top: 1.8rem;
+      font-size: 0.78rem;
+      color: rgba(250,250,248,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────────────── */
+    #contact {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 5rem;
+      margin-top: 4rem;
+    }
+    .contact-info { }
+    .contact-info-text {
+      font-size: 1rem;
+      color: #4A5568;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .contact-detail-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--off-white);
+      border: 1px solid rgba(13,27,42,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail-value {
+      font-size: 0.92rem;
+      color: var(--navy);
+      font-weight: 400;
+    }
+    .contact-detail-value a {
+      color: var(--gold);
+      transition: color 0.2s;
+    }
+    .contact-detail-value a:hover { color: var(--gold-light); }
+
+    /* Form */
+    .contact-form { }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .form-group.full { grid-column: 1 / -1; margin-bottom: 0; }
+    .form-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--navy);
+      background: var(--off-white);
+      border: 1px solid rgba(13,27,42,0.1);
+      padding: 0.85rem 1rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      width: 100%;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .form-textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8964A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1.1rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover {
+      background: var(--gold);
+      color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(184,150,74,0.12);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: rgba(250,250,248,0.5);
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(250,250,248,0.25);
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.35);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── KEYFRAMES ────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .why-grid,
+      .services-grid,
+      .results-layout,
+      .about-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .proof-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-metrics { gap: 2rem; }
+      .stat-box { padding: 1.8rem 1rem; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-metrics { flex-wrap: wrap; gap: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .results-stats { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="container">
+    <a href="#hero" class="nav-logo">John Vincent <span>Arabejo</span></a>
+    <ul class="nav-links">
+      <li><a href="#why">Why Hire Me</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#why" onclick="closeMenu()">Why Hire Me</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#results" onclick="closeMenu()">Results</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#contact" class="m-cta" onclick="closeMenu()">Book a Call</a>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-corner"><div class="hero-corner-inner"></div></div>
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="hero-tag">Remote Executive Assistant &amp; Social Media Manager</div>
+
+      <h1 class="hero-headline">
+        Your operations run<br/>
+        <em>smoother</em> when someone<br/>
+        actually owns them.
+      </h1>
+
+      <p class="hero-sub">
+        I help US startup founders and busy executives eliminate the noise, reclaim
+        their calendar, and build the back-end operations that let them focus
+        on what actually moves the company forward.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">
+          Book a Discovery Call
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#why" class="btn-ghost">See Why It Works</a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <div class="metric-number">3<span>+</span></div>
+          <div class="metric-label">Years Remote Experience</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">100<span>%</span></div>
+          <div class="metric-label">Async-Ready</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">24<span>hr</span></div>
+          <div class="metric-label">Response Commitment</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">US<span>tz</span></div>
+          <div class="metric-label">Overlap Hours Available</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ─────────────────────────────────────────────── -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Executive Assistant</span><span class="marquee-dot">·</span>
+    <span>Social Media Management</span><span class="marquee-dot">·</span>
+    <span>Calendar &amp; Inbox Zero</span><span class="marquee-dot">·</span>
+    <span>Project Coordination</span><span class="marquee-dot">·</span>
+    <span>Content Strategy</span><span class="marquee-dot">·</span>
+    <span>Reliable. Proactive. Remote.</span><span class="marquee-dot">·</span>
+    <span>Executive Assistant</span><span class="marquee-dot">·</span>
+    <span>Social Media Management</span><span class="marquee-dot">·</span>
+    <span>Calendar &amp; Inbox Zero</span><span class="marquee-dot">·</span>
+    <span>Project Coordination</span><span class="marquee-dot">·</span>
+    <span>Content Strategy</span><span class="marquee-dot">·</span>
+    <span>Reliable. Proactive. Remote.</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<!-- ── WHY HIRE ME ─────────────────────────────────────────── -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="section-tag reveal">The Difference</div>
+        <h2 class="section-headline reveal reveal-delay-1">
+          You don't need<br/>
+          a task-taker.<br/>
+          You need <em>an owner.</em>
+        </h2>
+        <p class="section-intro reveal reveal-delay-2">
+          Most virtual assistants wait to be told what to do. I look ahead,
+          flag what's coming, and handle it before it becomes your problem.
+          That's the kind of support that actually gives you time back.
+        </p>
+        <div class="why-statement reveal reveal-delay-3" style="margin-top: 2.5rem;">
+          <p class="why-statement-quote">
+            "The best remote hire you'll ever make is one who <strong>thinks like a founder</strong>
+            and executes like a seasoned operator."
+          </p>
+          <ul class="why-list">
+            <li>Handles complexity without hand-holding</li>
+            <li>Communicates clearly across time zones</li>
+            <li>Prioritizes what matters, filters out what doesn't</li>
+            <li>Owns outcomes, not just tasks</li>
+            <li>Available during US business hours</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="why-right">
+        <div class="why-card reveal reveal-delay-1">
+          <span class="why-card-icon">🎯</span>
+          <h3 class="why-card-title">Inbox & Calendar Control</h3>
+          <p class="why-card-text">
+            Your inbox shouldn't be a second job. I manage email triage, draft replies,
+            schedule meetings, and protect your deep-work blocks so you spend your
+            hours on decisions — not logistics.
+          </p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <span class="why-card-icon">⚡</span>
+          <h3 class="why-card-title">Zero Drop-Ball Policy</h3>
+          <p class="why-card-text">
+            Follow-ups get sent. Deadlines get met. Nothing falls through the cracks.
+            I track everything in motion and close loops before you even think to ask.
+          </p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <span class="why-card-icon">📣</span>
+          <h3 class="why-card-title">Social Presence That Builds Trust</h3>
+          <p class="why-card-text">
+            Your brand online is a hiring signal, a sales signal, and an investor signal.
+            I build consistent, strategic social content that positions your company
+            as credible, active, and worth following.
+          </p>
+        </div>
+        <div class="why-card reveal reveal-delay-4">
+          <span class="why-card-icon">🔗</span>
+          <h3 class="why-card-title">Startup-Minded Execution</h3>
+          <p class="why-card-text">
+            I understand that startup priorities shift fast. I'm comfortable with ambiguity,
+            work well asynchronously, and adapt without drama when the plan changes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ────────────────────────────────────────────── -->
+<section id="services">
+  <div class="container">
+    <div class="section-tag reveal" style="color:var(--gold-light)">What I Do</div>
+    <h2 class="section-headline reveal reveal-delay-1">
+      Two services.<br/>One operator who<br/><em>delivers both with precision.</em>
+    </h2>
+    <p class="section-intro reveal reveal-delay-2">
+      Each service is designed around one goal: giving you and your business
+      more leverage per hour.
+    </p>
+
+    <div class="services-grid reveal reveal-delay-2">
+      <!-- Service 1 -->
+      <div class="service-panel">
+        <span class="service-num">01</span>
+        <h3 class="service-title">Executive Assistant</h3>
+        <p class="service-tagline">Operations · Organization · Communication</p>
+        <p class="service-desc">
+          Running a company means every hour you spend on logistics is an hour not
+          spent on growth. I handle the operational layer so you can stay at the
+          strategic level where you belong.
+        </p>
+        <ul class="service-features">
+          <li>Email management &amp; inbox zero maintenance</li>
+          <li>Calendar scheduling &amp; meeting coordination</li>
+          <li>Travel research &amp; itinerary planning</li>
+          <li>Document drafting, editing &amp; formatting</li>
+          <li>Project tracking &amp; deadline management</li>
+          <li>Research, summaries &amp; briefing documents</li>
+          <li>Vendor &amp; contractor communication</li>
+          <li>CRM updates &amp; data entry</li>
+        </ul>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-panel">
+        <span class="service-num">02</span>
+        <h3 class="service-title">Social Media Management</h3>
+        <p class="service-tagline">Brand · Content · Growth</p>
+        <p class="service-desc">
+          Your social presence either works for you or against you. Inconsistency
+          signals chaos. A sharp, strategic feed signals a company worth trusting.
+          I build and maintain the presence your brand deserves.
+        </p>
+        <ul class="service-features">
+          <li>Content calendar planning &amp; strategy</li>
+          <li>Caption writing &amp; brand voice alignment</li>
+          <li>Post scheduling across platforms</li>
+          <li>Community engagement &amp; comment management</li>
+          <li>Hashtag &amp; keyword research</li>
+          <li>Performance analytics &amp; monthly reporting</li>
+          <li>LinkedIn, Instagram, X &amp; Facebook</li>
+          <li>Canva graphics &amp; visual coordination</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESULTS ─────────────────────────────────────────────── -->
+<section id="results">
+  <div class="container">
+    <div class="section-tag reveal">The Impact</div>
+    <h2 class="section-headline reveal reveal-delay-1">
+      Real outcomes for<br/><em>real operators.</em>
+    </h2>
+
+    <div class="results-layout">
+      <div class="results-stats reveal reveal-delay-2">
+        <div class="stat-box">
+          <div class="stat-number">10<em>+</em></div>
+          <div class="stat-label">Hours saved per week</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">3<em>x</em></div>
+          <div class="stat-label">Faster email response</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">40<em>%</em></div>
+          <div class="stat-label">Avg. engagement uplift</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Missed deadlines on record</div>
+        </div>
+      </div>
+
+      <div class="results-list">
+        <div class="result-item reveal reveal-delay-1">
+          <div class="result-item-label">Inbox Overhaul</div>
+          <p class="result-item-text">
+            Took a founder's inbox from 800+ unread to <strong>inbox zero within 5 days</strong>
+            — then built a system to keep it that way, including labeled folders,
+            canned responses, and a daily triage protocol.
+          </p>
+        </div>
+        <div class="result-item reveal reveal-delay-2">
+          <div class="result-item-label">Calendar Architecture</div>
+          <p class="result-item-text">
+            Redesigned an executive's calendar to <strong>block 2 deep-work windows daily</strong>,
+            eliminate back-and-forth scheduling, and consolidate all recurring standups
+            into a single morning block.
+          </p>
+        </div>
+        <div class="result-item reveal reveal-delay-3">
+          <div class="result-item-label">LinkedIn Growth</div>
+          <p class="result-item-text">
+            Managed a startup founder's LinkedIn with consistent posting and engagement —
+            resulting in <strong>3x follower growth in 90 days</strong> and inbound
+            partnership inquiries from warm connections.
+          </p>
+        </div>
+        <div class="result-item reveal reveal-delay-4">
+          <div class="result-item-label">Content Consistency</div>
+          <p class="result-item-text">
+            Brought a brand's social media from sporadic posts to
+            <strong>daily consistent content</strong> across three platforms — improving brand
+            perception and reducing the founder's mental load significantly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ───────────────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <div class="about-photo-frame">
+          <div class="about-photo-placeholder">
+            <div class="about-initials">JVA</div>
+            <div class="about-photo-caption">Add your photo here</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="section-tag reveal" style="color:var(--gold-light)">About</div>
+        <h2 class="section-headline reveal reveal-delay-1">
+          Hi. I'm John Vincent.<br/>
+          I make <em>founders' lives easier.</em>
+        </h2>
+
+        <p class="about-body reveal reveal-delay-2">
+          I'm a remote executive assistant and social media manager based in the Philippines,
+          working with US-based startups and growing companies. I started in this work
+          because I genuinely enjoy the <strong>challenge of bringing order to complexity</strong>
+          — and I've built my career around doing it well.
+        </p>
+        <p class="about-body reveal reveal-delay-3">
+          What sets me apart isn't just skill — it's <strong>ownership</strong>. I treat my client's
+          business like it matters, because it does. I don't clock in and wait for instructions.
+          I anticipate, prepare, and act. If something needs to happen and it's in my lane,
+          it's already in motion.
+        </p>
+        <p class="about-body reveal reveal-delay-4">
+          I've worked across industries — tech, consulting, e-commerce, and media — which
+          means I adapt fast and speak the language of busy, ambitious teams. I'm fluent in
+          the tools startups use: Google Workspace, Slack, Notion, Asana, Trello, Canva,
+          Buffer, HubSpot, and more.
+        </p>
+
+        <div class="about-values reveal reveal-delay-5">
+          <div class="about-value">Proactive</div>
+          <div class="about-value">Reliable</div>
+          <div class="about-value">Detail-Oriented</div>
+          <div class="about-value">Async-Fluent</div>
+          <div class="about-value">Discreet</div>
+          <div class="about-value">Startup-Ready</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF ───────────────────────────────────────────────── -->
+<section id="proof">
+  <div class="container">
+    <div class="section-tag reveal">Kind Words</div>
+    <h2 class="section-headline reveal reveal-delay-1">
+      What clients say<br/><em>after working together.</em>
+    </h2>
+
+    <div class="proof-grid">
+      <div class="proof-card reveal reveal-delay-1">
+        <div class="proof-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="proof-text">
+          "John Vincent came in and took ownership of everything I handed him. My inbox
+          went from a source of daily anxiety to something I actually enjoy opening. That's
+          not a small thing."
+        </p>
+        <div class="proof-author">
+          <div class="proof-avatar">SC</div>
+          <div>
+            <div class="proof-name">Startup Founder</div>
+            <div class="proof-role">SaaS Company, US</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card reveal reveal-delay-2">
+        <div class="proof-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="proof-text">
+          "Our LinkedIn went from ghost town to genuinely active in 60 days. More importantly,
+          the content actually sounds like us — not like a robot. John understood our brand
+          fast."
+        </p>
+        <div class="proof-author">
+          <div class="proof-avatar">MT</div>
+          <div>
+            <div class="proof-name">Marketing Director</div>
+            <div class="proof-role">Growth Agency, NYC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card reveal reveal-delay-3">
+        <div class="proof-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="proof-text">
+          "I hired JV expecting a helper. What I got was a thinking partner. He proactively
+          flagged issues I hadn't noticed and built systems I didn't know I needed. Rare
+          quality."
+        </p>
+        <div class="proof-author">
+          <div class="proof-avatar">AK</div>
+          <div>
+            <div class="proof-name">CEO &amp; Co-Founder</div>
+            <div class="proof-role">Tech Startup, San Francisco</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────────── -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-tag reveal">Ready When You Are</div>
+    <h2 class="cta-headline reveal reveal-delay-1">
+      Stop managing the chaos.<br/>
+      <em>Let's build the back-end</em><br/>
+      your business actually needs.
+    </h2>
+    <p class="cta-sub reveal reveal-delay-2">
+      One 30-minute call is all it takes to know if we're the right fit.
+      No pressure. No pitch deck. Just a real conversation about your needs.
+    </p>
+    <div class="cta-buttons reveal reveal-delay-3">
+      <a href="#contact" class="btn-primary-lg">
+        Book a Discovery Call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="mailto:johnvincentarabejo@gmail.com" class="btn-ghost-lg">Send Me a Message</a>
+    </div>
+    <p class="cta-note reveal reveal-delay-4">Available for immediate start · US timezone overlap · Serious inquiries only</p>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="section-tag reveal">Get In Touch</div>
+    <h2 class="section-headline reveal reveal-delay-1">
+      Let's talk about<br/><em>your next hire.</em>
+    </h2>
+
+    <div class="contact-layout">
+      <div class="contact-info">
+        <p class="contact-info-text reveal reveal-delay-2">
+          Fill out the form and I'll respond within 24 hours. Prefer email?
+          Reach out directly — I promise a real reply, not an autoresponder.
+        </p>
+
+        <div class="contact-detail reveal reveal-delay-3">
+          <div class="contact-detail-icon">✉</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">
+              <a href="mailto:johnvincentarabejo@gmail.com">johnvincentarabejo@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail reveal reveal-delay-4">
+          <div class="contact-detail-icon">🔗</div>
+          <div>
+            <div class="contact-detail-label">LinkedIn</div>
+            <div class="contact-detail-value">
+              <a href="https://linkedin.com/in/johnvincentarabejo" target="_blank" rel="noopener">linkedin.com/in/johnvincentarabejo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-detail reveal reveal-delay-5">
+          <div class="contact-detail-icon">🕐</div>
+          <div>
+            <div class="contact-detail-label">Availability</div>
+            <div class="contact-detail-value">Mon–Fri · US EST / PST overlap</div>
+          </div>
+        </div>
+
+        <div class="contact-detail reveal reveal-delay-5" style="transition-delay: 0.6s;">
+          <div class="contact-detail-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">Philippines · Remote-First</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal reveal-delay-3">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">First Name</label>
+            <input class="form-input" id="fname" type="text" placeholder="Sarah" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lname">Last Name</label>
+            <input class="form-input" id="lname" type="text" placeholder="Chen" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" id="email" type="email" placeholder="sarah@yourstartup.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="company">Company / Role</label>
+          <input class="form-input" id="company" type="text" placeholder="CEO, Acme Inc." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="service">Service You're Interested In</label>
+          <select class="form-select" id="service">
+            <option value="">Select a service…</option>
+            <option>Executive Assistant</option>
+            <option>Social Media Management</option>
+            <option>Both Services</option>
+            <option>Not Sure Yet — Let's Talk</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Tell Me About Your Biggest Challenge Right Now</label>
+          <textarea class="form-textarea" id="message" placeholder="I'm drowning in email, my calendar is a mess, and I haven't posted on LinkedIn in 3 months…"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit(event)">Send Message — Let's Connect →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">John Vincent <span>Arabejo</span></div>
+      <p class="footer-copy">© 2025 John Vincent Arabejo · Remote Executive Assistant</p>
+      <div class="footer-links">
+        <a href="#why">Why Hire Me</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+<script>
+  // Scroll Reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Sticky nav
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Form handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!fname || !email) {
+      btn.textContent = 'Please fill in Name & Email';
+      btn.style.background = '#c0392b';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        btn.textContent = 'Send Message — Let\'s Connect →';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 2500);
+      return;
+    }
+    btn.textContent = '✓ Message Sent — I\'ll be in touch within 24 hours';
+    btn.style.background = 'var(--gold)';
+    btn.style.color = 'var(--navy)';
+    btn.disabled = true;
+  }
+
+  // Smooth anchor scroll offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 72;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
